@@ -23,15 +23,14 @@ Actors:
 3.4 -  Student deposit on Lemon Brothers(Ask for University)
 3.5 -  Student consulting his balance
 3.6 -  Student transfering money to another student
-3.7 -  Student transfering money to an institution
 
-3.8 -  University paying students scholarship
-3.9 -  University paying an institution
-3.10 - University depositing money on Lemon Brothers
-3.11 - University consulting its balance
+3.7 -  University paying students scholarship
+3.8 -  University paying an institution
+3.9 -  University depositing money on Lemon Brothers
+3.10 - University consulting its balance
 
-3.12 - Institution consulting its balance
-3.13 - Institution withdrawing money(burn tokens)
+3.11 - Institution consulting its balance
+3.12 - Institution withdrawing money(burn tokens)
 
 3.13 - Lemon Brothers minting tokens
 3.14 - Lemon Brothers consulting its balance
