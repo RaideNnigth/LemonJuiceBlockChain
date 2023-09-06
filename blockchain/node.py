@@ -1,11 +1,11 @@
 # Implement the node for merkle tree here
 from lemonBlock import LemonBlock
 class Node:
-    def __init__(self, value: LemonBlock, left_child=None, right_child=None) -> None:
+    def __init__(self, value: str, left_child=None, right_child=None) -> None:
         self.left = left_child
         self.right = right_child
         self.value = value
-        
+
 """
 # Examples --- Create the nodes
 head_node = Node("3")

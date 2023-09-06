@@ -7,15 +7,16 @@ from node import Node
 from lemonBlock import LemonBlock
 
 class merkleTree:
-    def __init__(self, values) -> None:
+    def __init__(self, values: list[str]):
         self.values = values
         self.root = self.build_merkle_tree(self.values)
     
-    def build_merkle_tree(self, values):
+    def build_merkle_tree(self, values: list[str]) -> Node:
         complete_set = self.fill_set(values)
-        old_set_of_nodes = [Node(calculate_hash(value)) for value in complete_set]
+        old_set_of_nodes = [Node(value) for value in complete_set]
         tree_depth = self.compute_tree_depth(len(old_set_of_nodes))
-                
+
+        new_set_of_nodes = []   # This will be the new set of nodes, creating here soo we never have it empty at return
         for i in range(tree_depth):
             num_nodes = 2**(tree_depth - i)
             new_set_of_nodes = []
@@ -45,7 +46,7 @@ class merkleTree:
             while not self.is_power_of_two(len(new_nodes)):
                 new_nodes.append(new_nodes[-1])
             return new_nodes
-    def print_tree(self, node: Node, depth=0):
+    def print_tree(self, node, depth=0):
         if node is None:
             return
         print(f"{'  ' * depth}{node.value}")
@@ -78,7 +79,7 @@ second_block = LemonBlock(initial_block.cryptografic_hash(), timestamp,[t3, t4])
 third_block = LemonBlock(second_block.cryptografic_hash(), timestamp,[t5, t6])
 
 # Create the merkle tree
-merkle_tree = merkleTree([initial_block.cryptografic_hash(), second_block.cryptografic_hash(), third_block.cryptografic_hash()])
+merkle_tree = merkleTree([t1, t2, t3, t4, t5, t6])
 
 # Print tree
 merkle_tree.print_tree(merkle_tree.root)

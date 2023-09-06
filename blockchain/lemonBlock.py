@@ -9,7 +9,7 @@ class LemonBlock:
         self.timestamp = time_stamp
     
     # Method to calculate the hash of the block
-    def cryptografic_hash(self):
+    def cryptografic_hash(self) -> str:
         block_content = {
             "transaction_data": self.transaction_data,
             "previous_block_hash": self.previous_block_hash,
@@ -17,9 +17,6 @@ class LemonBlock:
         }
         return calculate_hash(json.dumps(block_content, indent=None))
     
-    # Getters for the block data, hash, previous block hash, transaction list, and timestamp
-    def get_block_hash(self):
-        return self.block_hash
     def get_previous_block_hash(self):
         return self.previous_block_hash
     
