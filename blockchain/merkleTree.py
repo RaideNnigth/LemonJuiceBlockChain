@@ -1,12 +1,13 @@
 # This class will implement a Merkle Tree for the blockchain, storing the transactions
 # in the leaves of the tree and the hashes of the transactions in the nodes of the tree.
 
+# from one directorie up, import the calculate_hash function in utils
 from utils import calculate_hash
 import math
 from node import Node
 from lemonBlock import LemonBlock
 
-class merkleTree:
+class MerkleTree:
     def __init__(self, values: list[str]):
         self.values = values
         self.root = self.build_merkle_tree(self.values)
@@ -79,7 +80,7 @@ second_block = LemonBlock(initial_block.cryptografic_hash(), timestamp,[t3, t4])
 third_block = LemonBlock(second_block.cryptografic_hash(), timestamp,[t5, t6])
 
 # Create the merkle tree
-merkle_tree = merkleTree([t1, t2, t3, t4, t5, t6])
+merkle_tree = MerkleTree([t1, t2, t3, t4, t5, t6])
 
 # Print tree
 merkle_tree.print_tree(merkle_tree.root)

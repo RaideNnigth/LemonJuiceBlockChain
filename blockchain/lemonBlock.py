@@ -3,8 +3,8 @@ from utils import calculate_hash
 
 class LemonBlock:
     # Constructor for the LemonBlock class
-    def __init__(self, time_stamp, previous_block_hash, transaction_data):
-        self.previous_block_hash = previous_block_hash
+    def __init__(self, time_stamp, previous_block, transaction_data):
+        self.previous_block = previous_block
         self.transaction_data = transaction_data
         self.timestamp = time_stamp
     
@@ -12,13 +12,13 @@ class LemonBlock:
     def cryptografic_hash(self) -> str:
         block_content = {
             "transaction_data": self.transaction_data,
-            "previous_block_hash": self.previous_block_hash,
+            "previous_block": self.previous_block,
             "timestamp": self.timestamp
         }
         return calculate_hash(json.dumps(block_content, indent=None))
     
-    def get_previous_block_hash(self):
-        return self.previous_block_hash
+    def get_previous_block(self):
+        return self.previous_block
     
     
 

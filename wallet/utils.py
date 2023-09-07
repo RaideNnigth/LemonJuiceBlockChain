@@ -28,20 +28,6 @@ def initialize_wallet():
     hash2 = calculate_hash_ripemd160(hash1)
     wallet_address = hash2
     return JuiceWallet(public_key, private_key, wallet_address)
-
-def generate_transaction_data(sender_bitcoin_address, receiver_bitcoin_address, amount: int) -> dict:
-    return {
-        "sender": sender_bitcoin_address,
-        "receiver": receiver_bitcoin_address,
-        "amount": amount
-    }
-
-def convert_transaction_data_to_bytes(transaction_data: dict):
-    new_transaction_data = transaction_data.copy()
-    new_transaction_data["sender"] = str(transaction_data["sender"])
-    new_transaction_data["receiver"] = str(transaction_data["receiver"])
-    new_transaction_data["amount"] = str(transaction_data["amount"])
-    return json.dumps(new_transaction_data, indent=2).encode('utf-8')
  
 # Test the wallet
 # wallet = initialize_wallet()
