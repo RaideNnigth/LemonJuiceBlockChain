@@ -1,18 +1,18 @@
 # Transaction class
-from juiceWallet import JuiceWallet
-from transactionInput import TransactionInput
-from transactionOutput import TransactionOutput
+from wallet.juiceWallet import JuiceWallet
+from wallet.transactionInput import TransactionInput
+from wallet.transactionOutput import TransactionOutput
 
-import utils
+#import wallet.utils
 import json
+import binascii
 
 class Transaction:
     def __init__(self, owner: JuiceWallet, inputs : list[TransactionInput], outputs: list[TransactionOutput]) -> None:
         self.owner = owner
         self.inputs = inputs
         self.outputs = outputs
-        self.signature = owner.sign(self.generate_data())
-    
+        
     # generate data for transaction
     def generate_data(self) -> bytes:
         transaction_dict = {
@@ -28,11 +28,26 @@ class Transaction:
             "inputs": [i.to_json() for i in self.inputs],
             "outputs": [o.to_json() for o in self.outputs]
         }
+            
+    def sign_transaction_data(self):
+        transaction_dict = {
+            "inputs": [tx_input.to_json(with_signature_and_public_key=False) for tx_input in self.inputs],
+            "outputs": [tx_output.to_json() for tx_output in self.outputs]
+        }
+        signature = self.owner.sign(json.dumps(transaction_dict).encode('utf-8'))
+        return signature
     
+    
+    def sign(self):
+        signature_hex = self.sign_transaction_data()
+        for transaction_input in self.inputs:
+            transaction_input.signature = signature_hex
+            transaction_input.public_key = self.owner.public_key
+        
 # Test the transaction
 
-wallet = utils.initialize_wallet()
-receiver = utils.initialize_wallet()
+#wallet = utils.initialize_wallet()
+#receiver = utils.initialize_wallet()
 
 #owner: JuiceWallet, receiver_lemoncoin_address: bytes, amount: int, signature: str = ""
 

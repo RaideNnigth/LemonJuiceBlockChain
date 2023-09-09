@@ -1,7 +1,7 @@
 # wallet/utils.py:
 import hashlib
 from Crypto.PublicKey import RSA
-from juiceWallet import JuiceWallet
+from wallet.juiceWallet import JuiceWallet
 import json
 
 # Calculate the hash of a string using SHA256

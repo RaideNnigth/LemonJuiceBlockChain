@@ -3,8 +3,8 @@
 import json
 
 class TransactionInput:
-    def __init__(self, transactio_hash: str, output_index: int, public_key: str = "", signature: str = "") -> None:
-        self.transaction_hash = transactio_hash
+    def __init__(self, transaction_hash: str, output_index: int, public_key: str = "", signature: str = "") -> None:
+        self.transaction_hash = transaction_hash
         self.output_index = output_index
         self.public_key = public_key
         self.signature = signature

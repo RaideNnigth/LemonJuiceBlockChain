@@ -3,11 +3,11 @@
 # They recieve transactions and validate them through the blockchain.
 # Guarentee the consensus of the blockchain.
 
-from lemonBlock import LemonBlock
+from blockchain.lemonBlock import LemonBlock
 from Crypto.Signature import pkcs1_15
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA256
-import utils
+from blockchain.utils import *
 
 import copy
 import json
@@ -63,7 +63,7 @@ class NetworkNodeClient:
         for tx_input in self.inputs:
             input_dict = json.loads(tx_input)
             public_key = input_dict["public_key"]
-            sender_public_key_hash = utils.calculate_hash_rimpemd160(utils.calculate_hash(public_key))
+            sender_public_key_hash = calculate_hash_rimpemd160(calculate_hash(public_key))
             transaction_data = self.get_transaction_from_utxo(input_dict["transaction_hash"])
             public_key_hash = json.loads(transaction_data["outputs"][input_dict["output_index"]])["public_key_hash"]
             assert public_key_hash == sender_public_key_hash    

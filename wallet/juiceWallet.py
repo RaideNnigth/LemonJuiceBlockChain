@@ -22,7 +22,7 @@ class JuiceWallet:
         print("Wallet address:", self.lemonade_address)
         print("Wallet public key:", self.public_key)
         print("Wallet private key:", self.__private_key.export_key().decode('utf-8'))
-        
+    
     # Sign the data with the private key
     def sign(self, data: bytes) -> str:
         # Create a SHA-256 hash of the data
@@ -30,3 +30,4 @@ class JuiceWallet:
         # Sign the hash using the private key
         signature = pkcs1_15.new(self.__private_key).sign(data_hash)
         return binascii.hexlify(signature).decode("utf-8")
+    

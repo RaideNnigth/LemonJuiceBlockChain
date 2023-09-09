@@ -1,9 +1,9 @@
 import json
-from utils import calculate_hash
+from blockchain.utils import calculate_hash
 
 class LemonBlock:
     # Constructor for the LemonBlock class
-    def __init__(self, time_stamp, previous_block, transaction_data):
+    def __init__(self, time_stamp, transaction_data, previous_block=None):
         self.previous_block = previous_block
         self.transaction_data = transaction_data
         self.timestamp = time_stamp
@@ -12,7 +12,7 @@ class LemonBlock:
     def cryptografic_hash(self) -> str:
         block_content = {
             "transaction_data": self.transaction_data,
-            "previous_block": self.previous_block,
+            "previous_block": self.previous_block.cryptografic_hash() if self.previous_block else None,
             "timestamp": self.timestamp
         }
         return calculate_hash(json.dumps(block_content, indent=None))
