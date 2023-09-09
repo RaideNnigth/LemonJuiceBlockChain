@@ -29,17 +29,17 @@ class Transaction:
             "outputs": [o.to_json() for o in self.outputs]
         }
             
-    def sign_transaction_data(self):
+    def sign_transaction_data(self) -> bytes:
         transaction_dict = {
             "inputs": [tx_input.to_json(with_signature_and_public_key=False) for tx_input in self.inputs],
             "outputs": [tx_output.to_json() for tx_output in self.outputs]
         }
-        signature = self.owner.sign(json.dumps(transaction_dict).encode('utf-8'))
+        signature = self.owner.sign(json.dumps(transaction_dict, indent=2).encode('utf-8'))
         return signature
     
     
     def sign(self):
-        signature_hex = self.sign_transaction_data()
+        signature_hex = binascii.hexlify(self.sign_transaction_data()).decode("utf-8")
         for transaction_input in self.inputs:
             transaction_input.signature = signature_hex
             transaction_input.public_key = self.owner.public_key

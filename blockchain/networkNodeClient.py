@@ -47,6 +47,7 @@ class NetworkNodeClient:
             public_key_object = RSA.import_key(binascii.unhexlify(public_key_bytes))
             transaction_bytes = json.dumps(transaction_data, indent=2).encode('utf-8')
             transaction_hash = SHA256.new(transaction_bytes)
+            # Try to verify the signature
             pkcs1_15.new(public_key_object).verify(transaction_hash, signature_decoded)
     
     # just get all transactions from utxo
