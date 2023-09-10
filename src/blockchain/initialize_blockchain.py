@@ -37,7 +37,7 @@ def blockchain():
                                output_index=0, public_key=bertrand_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
                                  amount=30)
-    output_1 = TransactionOutput(public_key_hash=albert_wallet.lemonade_address,
+    output_1 = TransactionOutput(public_key_hash=camille_wallet.lemonade_address,
                                  amount=10)
     inputs = [input_0.to_json()]
     outputs = [output_0.to_json(), output_1.to_json()]
