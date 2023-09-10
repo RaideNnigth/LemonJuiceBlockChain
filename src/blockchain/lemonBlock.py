@@ -3,7 +3,7 @@ from blockchain.utils import calculate_hash
 
 class LemonBlock:
     # Constructor for the LemonBlock class
-    def __init__(self, time_stamp, transaction_data, previous_block=None):
+    def __init__(self, time_stamp, transaction_data: dict, previous_block=None):
         self.previous_block = previous_block
         self.transaction_data = transaction_data
         self.timestamp = time_stamp

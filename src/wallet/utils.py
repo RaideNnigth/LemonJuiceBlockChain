@@ -4,6 +4,7 @@ from Crypto.PublicKey import RSA
 from wallet.juiceWallet import JuiceWallet
 from blockchain.lemonBlock import LemonBlock
 import binascii
+import json
 
 # Calculate the hash of a string using SHA256
 # and return the hex representation of it
@@ -53,27 +54,36 @@ def validate_pair_key(public_key_hex: str, private_key_hex: str):
 
 
 # Get balance from address
-def get_balance_from_address(address: str, blockchain: LemonBlock) -> int:
+def get_balance_from_address(public_key:str, address: str, blockchain: LemonBlock) -> int:
     current_block = blockchain
     balance = 0
     out_lc = 0
     in_lc = 0
     # For each block on blockchain
     while current_block:
-        # For each transaction on block
-        for transaction in current_block.transaction_data:
-            # For each output on transaction
-            for output in transaction["outputs"]:
-                # If the address is the same as the address passed as parameter
-                # Sum the amount to the out_lc
-                if (output["public_key_hash"] == address):
-                    out_lc = int(output["amount"]) + out_lc
-            # For each input on transaction
-            for input in transaction["inputs"]:
-                # If the address is the same as the address passed as parameter
-                # Sum the amount to the in_lc
-                if (input["public_key_hash"] == address):
-                    in_lc = int(input["amount"]) + in_lc
+        transaction_data = current_block.transaction_data
+        outputs = transaction_data["outputs"]
+        inputs = transaction_data["inputs"]
+        
+        # For each output on transaction
+        for output in outputs:
+            output = json.loads(output)
+            # If the address is the same as the address passed as parameter
+            # Sum the amount to the out_lc
+            if (output["public_key_hash"] == address):
+                out_lc = int(output["amount"]) + out_lc
+                print("out_lc: ", out_lc)
+        # For each input on transaction
+        for input in inputs:
+            input = json.loads(input)
+            # If the address is the same as the address passed as parameter
+            # Sum the amount to the in_lc
+            if (input["public_key"] == public_key):
+                index = int(input["output_index"])
+                output = outputs[index]
+                output = json.loads(output)
+                in_lc = int(output["amount"]) + in_lc
+                print("in_lc: ", in_lc)
         # Get the previous block
         current_block = current_block.get_previous_block()
     # Calculate the balance

@@ -22,7 +22,7 @@ class JuiceWallet:
     # Print the wallet (Only for testing purposes)   
     def print_wallet(self):
         print("Wallet address:", self.lemonade_address)
-        print("Wallet public key:", binascii.hexlify(self.public_key.encode('utf-8')))
+        print("Wallet public key:", self.public_key)
         print("Wallet private key:", binascii.hexlify(self.__private_key.export_key()))
     
     # Sign the data with the private key

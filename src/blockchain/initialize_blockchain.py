@@ -11,9 +11,13 @@ bertrand_wallet = initialize_wallet()
 camille_wallet = initialize_wallet()
 
 def get_wallets():
+    print("-----------------------------------------------------------------------")
     albert_wallet.print_wallet()
+    print("-----------------------------------------------------------------------")
     bertrand_wallet.print_wallet()
+    print("-----------------------------------------------------------------------")
     camille_wallet.print_wallet()
+    print("-----------------------------------------------------------------------")
 
 def blockchain():
     timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))

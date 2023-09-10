@@ -27,17 +27,15 @@ def wallet_access():
             return "Login Failed, public key or private key empty", 400
         
         # Validade if public key and private key are a pair
-        try:
-            private_key_object = validate_pair_key(public_key, private_key)
-        except:
+        if (validate_pair_key(public_key, private_key) == False):
             return "Login Failed, Keys does not match", 400
-        
+                
         # Import private key to RSA object
         private_key_object = import_private_key(private_key)
         
         # returns for the user the wallet address and balance, and wallet object
         wallet = JuiceWallet(public_key, private_key_object, get_address_from_public_key(public_key))
-        balance = get_balance_from_address(wallet.lemonade_address, blockchain_base)
+        balance = get_balance_from_address(wallet.public_key, wallet.lemonade_address, blockchain_base)
         address = wallet.lemonade_address
         
         return render_template('wallet.html', wallet=wallet, balance=balance, address=address)
