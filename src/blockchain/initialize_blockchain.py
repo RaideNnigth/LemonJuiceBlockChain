@@ -10,6 +10,10 @@ albert_wallet = initialize_wallet()
 bertrand_wallet = initialize_wallet()
 camille_wallet = initialize_wallet()
 
+def get_wallets():
+    albert_wallet.print_wallet()
+    bertrand_wallet.print_wallet()
+    camille_wallet.print_wallet()
 
 def blockchain():
     timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
@@ -67,4 +71,8 @@ def blockchain():
         transaction_data={"inputs": inputs, "outputs": outputs},
         previous_block=block_2
     )
+    
+    get_wallets()
+    
+    
     return block_3

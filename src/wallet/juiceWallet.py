@@ -19,7 +19,7 @@ class JuiceWallet:
         self.node = Node()
     
     # Print the wallet (Only for testing purposes)   
-    def __print_wallet(self):
+    def print_wallet(self):
         print("Wallet address:", self.lemonade_address)
         print("Wallet public key:", self.public_key)
         print("Wallet private key:", self.__private_key.export_key().decode('utf-8'))
