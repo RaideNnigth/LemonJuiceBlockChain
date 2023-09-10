@@ -5,19 +5,25 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Wallet</h1>
-    <p>Balance: {{ balance }}</p>
-    <p>Address: {{ address }}</p>
-    <p>Private Key: {{ private_key }}</p>
-    <p>Public Key: {{ public_key }}</p>
-    <p>Transactions:</p>
-    <ul>
-        {% for transaction in transactions %}
-            <li>{{ transaction }}</li>
-        {% endfor %}
-    </ul>
+    <h2>Address: {{ address }}</h2>
+    
+    <div class='container'>
+        <h2>Private Key: </h2>
+        <p>{{ private_key }}</p>
+    </div>
+    
+    <div class='container'>
+        <h2>Public Key: </h2>
+        <p>{{ public_key }}</p>
+    </div>
+
+
+    
     </form>
     <form method="post">
         <button type="submit" class="btn btn-primary">Create Wallet</button> 
     </form>
+</div>
 {% endblock %}

@@ -15,6 +15,7 @@ body {
 
 /* Style the container */
 .container {
+    word-wrap: break-word;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
