@@ -8,18 +8,16 @@
     <h1>Wallet</h1>
     <p>Balance: {{ balance }}</p>
     <p>Address: {{ address }}</p>
+    <p>Private Key: {{ private_key }}</p>
+    <p>Public Key: {{ public_key }}</p>
     <p>Transactions:</p>
     <ul>
         {% for transaction in transactions %}
             <li>{{ transaction }}</li>
         {% endfor %}
     </ul>
-    <form action="/wallet" method="post">
-        <input type="submit" value="Refresh">
     </form>
-    <form action="/wallet/send" method="post">
-        <input type="text" name="address" placeholder="Address">
-        <input type="number" name="amount" placeholder="Amount">
-        <input type="submit" value="Send">
+    <form method="post">
+        <button type="submit" class="btn btn-primary">Create Wallet</button> 
     </form>
 {% endblock %}

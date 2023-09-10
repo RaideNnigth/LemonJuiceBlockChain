@@ -3,6 +3,7 @@ from flask import Flask, render_template, url_for, request
 from blockchain.networkNodeClient import NetworkNodeClient, TransactionException
 from blockchain.initialize_blockchain import blockchain
 
+from wallet.utils import initialize_wallet
 from wallet.juiceWallet import JuiceWallet
 from wallet.utils import get_address_from_public_key, validate_pair_key, get_balance_from_address, import_private_key
 
@@ -38,10 +39,19 @@ def wallet_access():
         balance = get_balance_from_address(wallet.public_key, wallet.lemonade_address, blockchain_base)
         address = wallet.lemonade_address
         
-        return render_template('wallet.html', wallet=wallet, balance=balance, address=address)
+        return render_template('wallet-access.html', wallet=wallet, balance=balance, address=address, public_key=public_key, private_key=private_key)
         
     else: 
         return render_template('wallet.html')
+    
+@app.route('/wallet-create', methods=['GET', 'POST'])
+def wallet_creation():
+    if request.method == 'POST':
+        wallet = initialize_wallet()
+        
+        return render_template('wallet-create.html', private_key=wallet.private_key, public_key=wallet.public_key, address=wallet.lemonade_address)
+    else:
+        return render_template('wallet-create.html')
 
 @app.route("/transactions", methods=['POST'])
 def validate_transaction():
