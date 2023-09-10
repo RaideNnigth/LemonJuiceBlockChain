@@ -22,9 +22,8 @@
     </div>      
     <div Class='container'>
         <h3>Send Juice</h3>
-        <form method="post">
-            <input type="hidden" name="sender_public_key" value={{ public_key }}>
-            <input type="hidden" name="sender_private_key" value={{ private_key }}>
+        <form action='/transactions' method="post">
+            <input type="hidden" name="wallet" value={{ wallet }}>
             <div class="form-group">
                 <label for="address">Receiver Address</label>
                 <input type="text" id="address" name="address" required>
