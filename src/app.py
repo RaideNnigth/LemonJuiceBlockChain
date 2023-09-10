@@ -2,10 +2,16 @@ from flask import Flask, render_template, url_for, request
 
 from blockchain.networkNodeClient import NetworkNodeClient, TransactionException
 from blockchain.initialize_blockchain import blockchain
+from blockchain.lemonBlock import LemonBlock
 
 from wallet.utils import initialize_wallet
 from wallet.juiceWallet import JuiceWallet
+from wallet.transaction import Transaction
+from wallet.transactionInput import TransactionInput
+from wallet.transactionOutput import TransactionOutput
 from wallet.utils import get_address_from_public_key, validate_pair_key, get_balance_from_address, import_private_key
+
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -55,15 +61,39 @@ def wallet_creation():
 
 @app.route("/transactions", methods=['POST'])
 def validate_transaction():
-    content = request.json
-    try:
-        node = NetworkNodeClient(blockchain_base)
-        node.receive(transaction=content["transaction"])
-        node.validade()
-        node.validate_funds()
-    except TransactionException as transaction_exception:
-        return f'{transaction_exception}', 400
-    return "Transaction success", 200
+    if request.method == 'POST':
+        
+        private_key = request.form['private_key']
+        public_key = request.form['public_key']
+        address = request.form['address']
+        amount = request.form['amount']
+        
+        owner = JuiceWallet(public_key, import_private_key(private_key), address)
+        
+        timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
+        
+        input_0 = TransactionInput(transaction_hash=blockchain_base.cryptografic_hash(),
+                                output_index=0)
+        
+        output_0 = TransactionOutput(public_key_hash=address,
+                                    amount=int(amount))
+        
+        transaction = Transaction(owner, [input_0], [output_0])
+        transaction.process_transaction()
+        transaction_data = transaction.send_to_nodes()
+        
+        try:
+            node = NetworkNodeClient(blockchain_base)
+            node.receive(transaction_data)
+            node.validade()
+        except TransactionException as transaction_exception:
+            return f'{transaction_exception}', 40
+        
+        blockchain_base = LemonBlock(timestamp_0, transaction_data, blockchain_base)
+        
+        return "Transaction success", 200
+    else:
+        return "Transaction failed", 400
 
 
 if __name__ == '__main__':
