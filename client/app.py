@@ -6,6 +6,8 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         task_content = request.form['content']
+        return render_template(url_for('index'))
+        
     else: 
         return render_template('home.html')
     

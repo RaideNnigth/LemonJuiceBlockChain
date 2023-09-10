@@ -4,14 +4,13 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: yellowgreen;
+    background-color: #042c16;
 }
 
 .logo {
     width: 60px; /* Adjust the width as needed */
     height: auto; /* Maintain the aspect ratio */
 }
-
 
 /* Style the container */
 .container {
@@ -57,7 +56,7 @@ input[type="password"]:focus {
 
 /* Style the submit button */
 button[type="submit"] {
-    background-color: #007BFF;
+    background-color: #042c16;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -100,13 +99,13 @@ button[type="submit"]:hover {
 
 .navbar-links a {
     text-decoration: none;
-    color: #4A943A; /* Lemon Green */
+    color: #042c16; /* Lemon Green */
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .navbar-links a:hover {
-    color: #F5E942; /* Lemon Yellow */
+    color: #010804; /* Lemon Yellow */
 }
 
 
