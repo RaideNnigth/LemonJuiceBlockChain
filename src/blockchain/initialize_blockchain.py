@@ -6,9 +6,9 @@ from blockchain.lemonBlock import LemonBlock
 
 from wallet.utils import initialize_wallet
 
-albert_wallet = initialize_wallet()
-bertrand_wallet = initialize_wallet()
-camille_wallet = initialize_wallet()
+albert_wallet, priv = initialize_wallet()
+bertrand_wallet, priv = initialize_wallet()
+camille_wallet, priv = initialize_wallet()
 
 def get_wallets():
     print("-----------------------------------------------------------------------")
