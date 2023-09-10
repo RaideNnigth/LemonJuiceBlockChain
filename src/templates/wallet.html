@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Juice Wallet</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Juice Wallet</h2>
+        <form method="post"> <!-- Replace "/login" with the actual URL where your login view is defined -->
+            <input type="hidden" name="csrf_token" value="">
+            <div class="form-group">
+                <label for="public_key">Public Key in Hexadecimal</label>
+                <input type="text" id="public_key" name="public_key" required>
+            </div>
+            <div class="form-group">
+                <label for="private_key">Private Key in Hexadecimal</label>
+                <input type="text" id="private_key" name="public_key" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Access</button>
+        </form>
+    </div>
+    <div>
+    <h2>Transactions</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Amount</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.sender }}</td>
+                        <td>{{ transaction.receiver }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>       
+{% endblock %}
