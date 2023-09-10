@@ -3,6 +3,9 @@ from flask import Flask, render_template, url_for, request
 from blockchain.networkNodeClient import NetworkNodeClient, TransactionException
 from blockchain.initialize_blockchain import blockchain
 
+from wallet.juiceWallet import JuiceWallet
+from wallet.utils import get_address_from_public_key, validate_pair_key, get_balance_from_address, import_private_key
+
 app = Flask(__name__)
 
 blockchain_base = blockchain()
@@ -19,9 +22,25 @@ def index():
 @app.route('/login', methods=['GET'])
 def get_wallet_info():
     public_key = request.args.get('public_key')
+    private_key = request.args.get('private_key')
     
-    # TODO: get balance agains public key and get address
+    # Validade if public key and private key are not empty
+    if (public_key is None or private_key is None):
+        return "Login Failed, public key or private key empty", 400
     
+    # Validade if public key and private key are a pair
+    try:
+        private_key_object = validate_pair_key(public_key, private_key)
+    except:
+        return "Login Failed, Keys does not match", 400
+    
+    # Import private key to RSA object
+    private_key_object = import_private_key(private_key)
+    
+    # returns for the user the wallet address and balance, and wallet object
+    wallet = JuiceWallet(public_key, private_key_object, get_address_from_public_key(public_key))
+    balance = get_balance_from_address(wallet.lemonade_address, blockchain_base)
+    address = wallet.lemonade_address
     
     return "Login Success", 200
 
