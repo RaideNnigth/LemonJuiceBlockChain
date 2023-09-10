@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
 
-from ..blockchain.networkNodeClient import NetworkNodeClient, TransactionException
-from ..blockchain.initialize_blockchain import blockchain
+from blockchain.networkNodeClient import NetworkNodeClient, TransactionException
+from blockchain.initialize_blockchain import blockchain
 
 app = Flask(__name__)
 
@@ -15,6 +15,17 @@ def index():
         
     else: 
         return render_template('home.html')
+
+@app.route('/login', methods=['GET'])
+def get_wallet_info():
+    public_key = request.args.get('public_key')
+    
+    # TODO: get balance agains public key
+    
+    
+    
+    return "Login Success", 200
+
 
 
 @app.route("/transactions", methods=['POST'])
@@ -32,4 +43,3 @@ def validate_transaction():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
