@@ -5,8 +5,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 
-from wallet.transaction import Transaction, TransactionInput, TransactionOutput
-
 import requests
 
 # JuiceWallet class
@@ -33,12 +31,6 @@ class JuiceWallet:
         # Sign the hash using the private key
         signature = pkcs1_15.new(self.__private_key).sign(data_hash)
         return signature
-    
-    # Process Transaction 
-    def process_transaction(self, inputs: list[TransactionInput], outputs: list[TransactionOutput]) -> requests.Response:
-        transaction = Transaction(self, inputs, outputs)
-        transaction.sign()
-        return self.node.send({"transaction": transaction.generate_data()})
     
 class Node:
     def __init__(self):

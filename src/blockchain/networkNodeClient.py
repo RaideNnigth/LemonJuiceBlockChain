@@ -107,4 +107,9 @@ class NetworkNodeClient:
         if sender_balance < amount:
             return False
         return True
-    
+
+# Exception for transaction
+class TransactionException(Exception):
+    def __init__(self, expression, message):
+        self.expression = expression
+        self.message = message
