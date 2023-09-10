@@ -6,6 +6,7 @@ from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 
 import requests
+import binascii
 
 # JuiceWallet class
 # This class represents a wallet with a public key, private key and address
@@ -21,8 +22,8 @@ class JuiceWallet:
     # Print the wallet (Only for testing purposes)   
     def print_wallet(self):
         print("Wallet address:", self.lemonade_address)
-        print("Wallet public key:", self.public_key)
-        print("Wallet private key:", self.__private_key.export_key().decode('utf-8'))
+        print("Wallet public key:", binascii.hexlify(self.public_key.encode('utf-8')))
+        print("Wallet private key:", binascii.hexlify(self.__private_key.export_key()))
     
     # Sign the data with the private key
     def sign(self, data: bytes) -> bytes:
