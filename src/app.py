@@ -39,7 +39,7 @@ def wallet_access():
         balance = get_balance_from_address(wallet.public_key, wallet.lemonade_address, blockchain_base)
         address = wallet.lemonade_address
         
-        return render_template('wallet-access.html', wallet=wallet, balance=balance, address=address)
+        return render_template('wallet-access.html', wallet=wallet, balance=balance, address=address, public_key=public_key, private_key=private_key)
         
     else: 
         return render_template('wallet.html')
