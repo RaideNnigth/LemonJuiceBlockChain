@@ -30,7 +30,7 @@ def initialize_wallet():
     hash1 = calculate_hash_sha256(public_key_hex)
     hash2 = calculate_hash_ripemd160(hash1)
     wallet_address = hash2
-    return JuiceWallet(public_key_hex, private_key, wallet_address)
+    return JuiceWallet(public_key_hex, private_key, wallet_address), binascii.hexlify(private_key.export_key())
 
 # Get address from public key to lemonade wallet
 def get_address_from_public_key(public_key_hex: str):

@@ -47,9 +47,9 @@ def wallet_access():
 @app.route('/wallet-create', methods=['GET', 'POST'])
 def wallet_creation():
     if request.method == 'POST':
-        wallet = initialize_wallet()
+        wallet, private_key = initialize_wallet()
         
-        return render_template('wallet-create.html', private_key=wallet.private_key, public_key=wallet.public_key, address=wallet.lemonade_address)
+        return render_template('wallet-create.html', private_key=private_key, public_key=wallet.public_key, address=wallet.lemonade_address)
     else:
         return render_template('wallet-create.html')
 
