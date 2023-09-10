@@ -85,8 +85,19 @@ button[type="submit"]:hover {
 .navbar-logo {
     font-size: 24px;
     font-weight: bold;
-    color: #4A943A; /* Lemon Green */
+    color: #4A943A; 
+    width: 60px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
 }
+
+.navbar-logo-wallet {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4A943A; 
+    width: 60px; /* Adjust the width as needed */
+    height: auto;
+}
+
 
 .navbar-links {
     list-style: none;

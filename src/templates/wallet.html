@@ -19,32 +19,5 @@
             </div>
             <button type="submit" class="btn btn-primary">Access</button>
         </form>
-
-        <h2>Address</h2>
-            <p>{{ address }}</p>
-        <h3>Balance</h3>
-            <p>{{ balance }}</p>
-        <h3>Transactions</h3>
-            <p>{{ transactions }}</p>
-    </div> 
-    <div>
-        <h3>Receive Juice</h3>
-        <p>Send Juice to this address to receive it in your wallet.</p>
-        <p>{{ address }}</p>
-    </div>      
-    <div Class='container'>
-        <h3>Send Juice</h3>
-        <form method="post">
-            <input type="hidden" name="csrf_token" value="">
-            <div class="form-group">
-                <label for="recipient">Recipient</label>
-                <input type="text" id="recipient" name="recipient" required>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="text" id="amount" name="amount" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button> 
-        </form>
     </div>    
 {% endblock %}
