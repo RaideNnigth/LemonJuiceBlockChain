@@ -22,7 +22,7 @@ def get_wallets():
 def blockchain():
     timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
     input_0 = TransactionInput(transaction_hash="INITIAL_HASH",
-                               output_index=0)
+                               output_index=0, public_key=albert_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=albert_wallet.lemonade_address,
                                  amount=40)
     inputs = [input_0.to_json()]
@@ -34,7 +34,7 @@ def blockchain():
 
     timestamp_1 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
     input_0 = TransactionInput(transaction_hash=block_0.cryptografic_hash(),
-                               output_index=0)
+                               output_index=0, public_key=bertrand_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
                                  amount=30)
     output_1 = TransactionOutput(public_key_hash=albert_wallet.lemonade_address,
@@ -50,7 +50,7 @@ def blockchain():
 
     timestamp_2 = datetime.timestamp(datetime.fromisoformat('2011-11-07 00:05:13.222'))
     input_0 = TransactionInput(transaction_hash=block_1.cryptografic_hash(),
-                               output_index=1)
+                               output_index=0, public_key=camille_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=camille_wallet.lemonade_address,
                                  amount=10)
     inputs = [input_0.to_json()]
@@ -63,8 +63,8 @@ def blockchain():
 
     timestamp_3 = datetime.timestamp(datetime.fromisoformat('2011-11-09 00:11:13.333'))
     input_0 = TransactionInput(transaction_hash=block_1.cryptografic_hash(),
-                               output_index=0)
-    output_0 = TransactionOutput(public_key_hash=camille_wallet.lemonade_address,
+                               output_index=0, public_key=camille_wallet.public_key)
+    output_0 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
                                  amount=5)
     output_1 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
                                  amount=25)
@@ -77,6 +77,5 @@ def blockchain():
     )
     
     get_wallets()
-    
     
     return block_3

@@ -59,11 +59,16 @@ def get_balance_from_address(public_key:str, address: str, blockchain: LemonBloc
     balance = 0
     out_lc = 0
     in_lc = 0
+    
+    c = 0
     # For each block on blockchain
     while current_block:
         transaction_data = current_block.transaction_data
         outputs = transaction_data["outputs"]
         inputs = transaction_data["inputs"]
+        
+        print(f"block: {c}")
+        c = c + 1
         
         # For each output on transaction
         for output in outputs:
@@ -80,6 +85,7 @@ def get_balance_from_address(public_key:str, address: str, blockchain: LemonBloc
             # Sum the amount to the in_lc
             if (input["public_key"] == public_key):
                 index = int(input["output_index"])
+                print("output_index: ", index)
                 output = outputs[index]
                 output = json.loads(output)
                 in_lc = int(output["amount"]) + in_lc
@@ -88,6 +94,7 @@ def get_balance_from_address(public_key:str, address: str, blockchain: LemonBloc
         current_block = current_block.get_previous_block()
     # Calculate the balance
     balance = out_lc - in_lc
+    print("balance: ", balance)
     return balance
 
 # Test the wallet
