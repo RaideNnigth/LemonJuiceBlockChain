@@ -6,6 +6,7 @@ from wallet.transactionOutput import TransactionOutput
 #import wallet.utils
 import json
 import binascii
+import requests
 
 class Transaction:
     def __init__(self, owner: JuiceWallet, inputs : list[TransactionInput], outputs: list[TransactionOutput]) -> None:
@@ -43,6 +44,11 @@ class Transaction:
         for transaction_input in self.inputs:
             transaction_input.signature = signature_hex
             transaction_input.public_key = self.owner.public_key
+    
+    # Process Transaction 
+    def process_transaction(self) -> requests.Response:
+        self.sign()
+        return self.owner.node.send({"transaction": self.generate_data()})
         
 # Test the transaction
 

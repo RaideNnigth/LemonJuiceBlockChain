@@ -1,12 +1,11 @@
 # Path: wallet/juiceWallet.py
 # Wallet class for JuiceCoin
 
-import binascii
 from Crypto.PublicKey import RSA
-
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 
+import requests
 
 # JuiceWallet class
 # This class represents a wallet with a public key, private key and address
@@ -17,6 +16,7 @@ class JuiceWallet:
         self.lemonade_address = address                  # address is the hash of the public key
         self.public_key = public_key_hex                     # public key
         self.__private_key = private_key                  # private key
+        self.node = Node()
     
     # Print the wallet (Only for testing purposes)   
     def __print_wallet(self):
@@ -32,3 +32,14 @@ class JuiceWallet:
         signature = pkcs1_15.new(self.__private_key).sign(data_hash)
         return signature
     
+class Node:
+    def __init__(self):
+        ip = "127.0.0.1"
+        port = 5000
+        self.base_url = f"http://{ip}:{port}/"
+
+    def send(self, transaction_data: dict) -> requests.Response:
+        url = f"{self.base_url}transactions"
+        req_return = requests.post(url, json=transaction_data)
+        req_return.raise_for_status()
+        return req_return
