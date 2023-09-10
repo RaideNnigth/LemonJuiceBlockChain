@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: yellowgreen;
+}
+
+.logo {
+    width: 60px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+
+/* Style the container */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form */
+form {
+    text-align: center;
+}
+
+/* Style the form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 75%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007BFF;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Style the navbar */
+.navbar {
+    background-color: #F5E942; /* Lemon Yellow */
+    color: #4A943A; /* Lemon Green */
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4A943A; /* Lemon Green */
+}
+
+.navbar-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-right: 20px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #4A943A; /* Lemon Green */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #F5E942; /* Lemon Yellow */
+}
+
+
