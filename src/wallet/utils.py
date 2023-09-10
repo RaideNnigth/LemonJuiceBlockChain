@@ -23,7 +23,7 @@ def calculate_hash_ripemd160(data: str):
 
 # Initialize a wallet with a public key, private key and address
 def initialize_wallet():
-    private_key = RSA.generate(3072)
+    private_key = RSA.generate(1024)
     public_key = private_key.publickey().export_key()
     public_key_hex = binascii.hexlify(public_key).decode('utf-8')
     hash1 = calculate_hash_sha256(public_key_hex)
@@ -67,13 +67,13 @@ def get_balance_from_address(address: str, blockchain: LemonBlock) -> int:
                 # If the address is the same as the address passed as parameter
                 # Sum the amount to the out_lc
                 if (output["public_key_hash"] == address):
-                    out_lc = output["amount"] + out_lc
+                    out_lc = int(output["amount"]) + out_lc
             # For each input on transaction
             for input in transaction["inputs"]:
                 # If the address is the same as the address passed as parameter
                 # Sum the amount to the in_lc
                 if (input["public_key_hash"] == address):
-                    in_lc = input["amount"] + in_lc
+                    in_lc = int(input["amount"]) + in_lc
         # Get the previous block
         current_block = current_block.get_previous_block()
     # Calculate the balance

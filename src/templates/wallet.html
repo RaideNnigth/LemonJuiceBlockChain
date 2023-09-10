@@ -15,32 +15,36 @@
             </div>
             <div class="form-group">
                 <label for="private_key">Private Key in Hexadecimal</label>
-                <input type="text" id="private_key" name="public_key" required>
+                <input type="text" id="private_key" name="private_key" required>
             </div>
             <button type="submit" class="btn btn-primary">Access</button>
         </form>
-    </div>
+
+        <h2>Address</h2>
+            <p>{{ address }}</p>
+        <h3>Balance</h3>
+            <p>{{ balance }}</p>
+        <h3>Transactions</h3>
+            <p>{{ transactions }}</p>
+    </div> 
     <div>
-    <h2>Transactions</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Sender</th>
-                    <th>Receiver</th>
-                    <th>Amount</th>
-                    <th>Timestamp</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for transaction in transactions %}
-                    <tr>
-                        <td>{{ transaction.sender }}</td>
-                        <td>{{ transaction.receiver }}</td>
-                        <td>{{ transaction.amount }}</td>
-                        <td>{{ transaction.timestamp }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>       
+        <h3>Receive Juice</h3>
+        <p>Send Juice to this address to receive it in your wallet.</p>
+        <p>{{ address }}</p>
+    </div>      
+    <div Class='container'>
+        <h3>Send Juice</h3>
+        <form method="post">
+            <input type="hidden" name="csrf_token" value="">
+            <div class="form-group">
+                <label for="recipient">Recipient</label>
+                <input type="text" id="recipient" name="recipient" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="text" id="amount" name="amount" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button> 
+        </form>
+    </div>    
 {% endblock %}
