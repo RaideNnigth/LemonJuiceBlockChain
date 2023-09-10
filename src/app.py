@@ -20,8 +20,7 @@ def index():
 def get_wallet_info():
     public_key = request.args.get('public_key')
     
-    # TODO: get balance agains public key
-    
+    # TODO: get balance agains public key and get address
     
     
     return "Login Success", 200
