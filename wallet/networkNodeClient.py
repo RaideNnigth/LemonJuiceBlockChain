@@ -4,10 +4,11 @@
 # Guarentee the consensus of the blockchain.
 
 from blockchain.lemonBlock import LemonBlock
+from blockchain.utils import *
+
 from Crypto.Signature import pkcs1_15
 from Crypto.PublicKey import RSA
 from Crypto.Hash import SHA256
-from blockchain.utils import *
 
 import copy
 import json

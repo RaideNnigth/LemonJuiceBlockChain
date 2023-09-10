@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from blockchain.lemonBlock import LemonBlock as Block
-from blockchain.networkNodeClient import NetworkNodeClient as NodeTransaction
+from wallet.networkNodeClient import NetworkNodeClient as NodeTransaction
 from wallet.transactionInput import TransactionInput
 from wallet.transactionOutput import TransactionOutput
 from wallet.utils import initialize_wallet
