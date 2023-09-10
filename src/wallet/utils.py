@@ -77,7 +77,8 @@ def get_balance_from_address(public_key:str, address: str, blockchain: LemonBloc
             # Sum the amount to the out_lc
             if (output["public_key_hash"] == address):
                 out_lc = int(output["amount"]) + out_lc
-                print("out_lc: ", out_lc)
+                print("Received: ", int(output["amount"]))
+
         # For each input on transaction
         for input in inputs:
             input = json.loads(input)
@@ -85,11 +86,10 @@ def get_balance_from_address(public_key:str, address: str, blockchain: LemonBloc
             # Sum the amount to the in_lc
             if (input["public_key"] == public_key):
                 index = int(input["output_index"])
-                print("output_index: ", index)
                 output = outputs[index]
                 output = json.loads(output)
                 in_lc = int(output["amount"]) + in_lc
-                print("in_lc: ", in_lc)
+                print("Sent: ", int(output["amount"]))
         # Get the previous block
         current_block = current_block.get_previous_block()
     # Calculate the balance
