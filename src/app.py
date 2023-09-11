@@ -15,6 +15,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+host = "192.168.8.82" # Change to your IP address
+
 blockchain_base = blockchain()
 
 @app.route('/home')
@@ -98,4 +100,4 @@ def validate_transaction():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host=host)
