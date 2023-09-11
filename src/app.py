@@ -94,7 +94,9 @@ def validate_transaction():
         
         blockchain_base = LemonBlock(timestamp_0, transaction_data, blockchain_base)
         
-        return "Transaction success", 200
+        balance = get_balance_from_address(owner.public_key, owner.lemonade_address, blockchain_base)
+        
+        return render_template('wallet-access.html', wallet=owner, balance=balance, address=address, public_key=public_key, private_key=private_key)
     else:
         return "Transaction failed", 400
 

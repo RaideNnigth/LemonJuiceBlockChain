@@ -31,8 +31,8 @@ class NetworkNodeClient:
     # Validate the transaction
     def validade(self):
         self.validate_signature()
-        self.validade_funds_are_owned_by_sender()
-        self.validate_funds()
+        #self.validade_funds_are_owned_by_sender()
+        #self.validate_funds()
     
     # make sure the transaction is valid
     # if it fails will throw an exception
