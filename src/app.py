@@ -23,7 +23,7 @@ def home():
 
 @app.route('/wallet', methods=['GET', 'POST'])
 def wallet_access():
-   
+    global blockchain_base  # Declare blockchain_base as global
     if request.method == 'POST':
         
         public_key = request.form['public_key']
@@ -61,6 +61,7 @@ def wallet_creation():
 
 @app.route("/transactions", methods=['POST'])
 def validate_transaction():
+    global blockchain_base  # Declare blockchain_base as global
     if request.method == 'POST':
         
         private_key = request.form['private_key']
