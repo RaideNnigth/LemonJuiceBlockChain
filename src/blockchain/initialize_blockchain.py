@@ -20,6 +20,7 @@ def get_wallets():
     print("-----------------------------------------------------------------------")
 
 def blockchain():
+    
     timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
     input_0 = TransactionInput(transaction_hash="INITIAL_HASH",
                                output_index=0, public_key=albert_wallet.public_key)
@@ -32,14 +33,17 @@ def blockchain():
         transaction_data={"inputs": inputs, "outputs": outputs}
     )
 
+
     timestamp_1 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
     input_0 = TransactionInput(transaction_hash=block_0.cryptografic_hash(),
-                               output_index=0, public_key=bertrand_wallet.public_key)
+                               output_index=0, public_key=albert_wallet.public_key)
+    input_1 = TransactionInput(transaction_hash=block_0.cryptografic_hash(),
+                               output_index=1, public_key=albert_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
-                                 amount=30)
+                                 amount=20)
     output_1 = TransactionOutput(public_key_hash=camille_wallet.lemonade_address,
-                                 amount=10)
-    inputs = [input_0.to_json()]
+                                 amount=20)
+    inputs = [input_0.to_json(), input_1.to_json()]
     outputs = [output_0.to_json(), output_1.to_json()]
 
     block_1 = LemonBlock(
@@ -64,11 +68,13 @@ def blockchain():
     timestamp_3 = datetime.timestamp(datetime.fromisoformat('2011-11-09 00:11:13.333'))
     input_0 = TransactionInput(transaction_hash=block_1.cryptografic_hash(),
                                output_index=0, public_key=camille_wallet.public_key)
+    input_1 = TransactionInput(transaction_hash=block_0.cryptografic_hash(),
+                               output_index=1, public_key=bertrand_wallet.public_key)
     output_0 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
                                  amount=5)
-    output_1 = TransactionOutput(public_key_hash=bertrand_wallet.lemonade_address,
+    output_1 = TransactionOutput(public_key_hash=albert_wallet.lemonade_address,
                                  amount=25)
-    inputs = [input_0.to_json()]
+    inputs = [input_0.to_json(), input_1.to_json()]
     outputs = [output_0.to_json(), output_1.to_json()]
     block_3 = LemonBlock(
         time_stamp=timestamp_3,

@@ -68,6 +68,8 @@ class NetworkNodeClient:
             sender_public_key_hash = calculate_hash_rimpemd160(calculate_hash(public_key))
             transaction_data = self.get_transaction_from_utxo(input_dict["transaction_hash"])
             public_key_hash = json.loads(transaction_data["outputs"][input_dict["output_index"]])["public_key_hash"]
+            print("sender_public_key_hash: ", sender_public_key_hash)
+            print("public_key_hash: ", public_key_hash)
             assert public_key_hash == sender_public_key_hash    
     
     # make sure the funds are valid
