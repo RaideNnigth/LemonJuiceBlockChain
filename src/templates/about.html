@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>About</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Who Developed This</h1>
+    <div class="container">
+        <h2>Gustavo Pereira, the Go Horse Guru</h2>
+        <p>Official Student of Go Horse at the University of Goofiness</p>
+        <p>Master of Messy Hair and Bedhead</p>
+        <p>Professional Chuckler and Sarrador Extraordinaire</p>
+        <p>Guardian of Memes and Chief Coffee Brewer</p>
+        <p>Craft Beer Connoisseur and Pizza Archaeologist</p>
+        <p>Barbecue Maestro and Grill Whisperer</p>
+        <p>Lover of All Things Delicious (except Brussels sprouts)</p>
+        <p>Passionate About Everything (even bad puns)</p>
+        <p class='container-image'><img src="{{ url_for('static', filename='images/gustavo-pereira.png') }}" alt="Profile Image"></p>
+    </div>
+       
+    <div class="container">
+        <h2>Rávilon Aguiar, the Go Horse Whisperer</h2>
+        <p>Professional Velcro Expert</p>
+        <p>Chief Sock Thief</p>
+        <p>Master of Memes and Puns</p>
+        <p>World Record Holder in Coffee Consumption</p>
+        <p>Beer Sommelier Extraordinaire</p>
+        <p>Pizza Enthusiast and Collector of Pizza Crusts</p>
+        <p>Grill Maestro of the Barbecue Galaxy</p>
+        <p>Lover of Everything, Even Brussels Sprouts</p>
+        <p class='container-image'> <img src="{{ url_for('static', filename='images/ravilon-aguiar.png') }}" > </p>
+
+    </div>  
+{% endblock %}

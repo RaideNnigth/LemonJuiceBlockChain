@@ -15,7 +15,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-host = "192.168.8.5" # Change to your IP address
+host = "192.168.8.82" # Change to your IP address
 
 blockchain_base = blockchain()
 
@@ -99,6 +99,10 @@ def validate_transaction():
         return render_template('wallet-access.html', wallet=owner, balance=balance, address=address, public_key=public_key, private_key=private_key)
     else:
         return "Transaction failed", 400
+
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':
