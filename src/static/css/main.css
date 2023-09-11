@@ -101,7 +101,9 @@ button[type="submit"]:hover {
     font-weight: bold;
     color: #4A943A; 
     width: 60px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+    height: auto;
+    padding-left: 10px;
+    padding-left: 10px; /* Maintain the aspect ratio */
 }
 
 .navbar-logo-wallet {
@@ -115,7 +117,7 @@ button[type="submit"]:hover {
 
 .navbar-links {
     list-style: none;
-    padding: 0;
+    padding-left: 5px;
     display: flex;
 }
 
@@ -128,6 +130,18 @@ button[type="submit"]:hover {
     color: #095f30; /* Lemon Green */
     font-weight: bold;
     transition: color 0.3s ease;
+}
+
+.navbar-conteiner {
+    color:#fff;
+    word-wrap: break-word;    
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgb(219, 209, 59);
+    border-radius: 80px;
+    background-color: rgb(219, 209, 59);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-links a:hover {

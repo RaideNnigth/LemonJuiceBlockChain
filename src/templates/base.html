@@ -15,22 +15,21 @@
             </a>
         </div>
         <ul class="navbar-links">
-            <li><a href="/wallet-create"> 
-                <p class='container'> Create <img src="{{ url_for('static', filename='images/create-wallet-icon.png') }}" alt="Lemon" width="32" height="32"> </p> 
+            <li><a href="/wallet">
+                <p class='navbar-conteiner'> Access <img src="{{ url_for('static', filename='images/access-wallet-icon.png') }}" alt="Lemon" width="32" height="32"> </p> 
                 </a>
             </li>
         </ul>
         <ul class="navbar-links">
-            <li><a href="/wallet">
-                <p class='container'> Access <img src="{{ url_for('static', filename='images/access-wallet-icon.png') }}" alt="Lemon" width="32" height="32"> </p> 
+            <li><a href="/wallet-create"> 
+                <p class='navbar-conteiner'> Create <img src="{{ url_for('static', filename='images/create-wallet-icon.png') }}" alt="Lemon" width="32" height="32"> </p> 
                 </a>
             </li>
         </ul>
-        
         <div class="navbar-links">
             <li>
                 <a href="/about">
-                    <img src="{{ url_for('static', filename='images/about-icon.png') }}" alt="About Icon" width="50" height="50">
+                    <img src="{{ url_for('static', filename='images/about-icon.png') }}" alt="About Icon" class="navbar-logo-wallet">
                 </a>
             </li>
         </div>
