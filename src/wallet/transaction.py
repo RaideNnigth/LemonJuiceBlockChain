@@ -46,9 +46,8 @@ class Transaction:
             transaction_input.public_key = self.owner.public_key
     
     # Process Transaction 
-    def process_transaction(self) -> requests.Response:
+    def process_transaction(self):
         self.sign()
-        return self.owner.node.send({"transaction": self.generate_data()})
         
 # Test the transaction
 
