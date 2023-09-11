@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F5E942;
+    background-image: url("https://cdn.pixabay.com/photo/2016/02/11/14/59/background-1193727_1280.png");
     overflow:auto;
 }
 
@@ -87,9 +88,12 @@ button[type="submit"]:hover {
     background-color: #F5E942; /* Lemon Yellow */
     color: #4A943A; /* Lemon Green */
     padding: 10px 0;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 80px;
+     
 }
 
 .navbar-logo {
