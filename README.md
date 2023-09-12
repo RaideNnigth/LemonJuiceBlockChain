@@ -12,3 +12,10 @@
 7. Access url: `http://127.0.0.1:5000/home`
 8. You can also use your IP:port to access the server from other devices in the same network
    (or external if port forwarding is set up)
+
+### Images portifolio
+![Home](docs/images/1.png)
+![About](docs/images/2.png)
+![access](docs/images/3.png)
+![create-wallet](docs/images/4.png)
+![wallet](docs/images/5.png)
