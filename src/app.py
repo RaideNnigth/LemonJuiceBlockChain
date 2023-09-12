@@ -15,7 +15,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-host = "192.168.8.5" # Change to your IP address
+host = "0.0.0.0" # Change to your IP address
 
 blockchain_base = blockchain()
 

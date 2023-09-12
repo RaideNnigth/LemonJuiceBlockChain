@@ -9,3 +9,6 @@
 4. Activate the virtual env by `./scr/env/Scripts/activate`
 5. Install the requirements by `pip install -r requirements.txt`
 6. Run the server by `python app.py`
+7. Access url: `http://127.0.0.1:5000/home`
+8. You can also use your IP:port to access the server from other devices in the same network
+   (or external if port forwarding is set up)
