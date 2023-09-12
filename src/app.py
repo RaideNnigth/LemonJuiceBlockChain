@@ -15,7 +15,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-host = "192.168.8.82" # Change to your IP address
+host = "192.168.8.5" # Change to your IP address
 
 blockchain_base = blockchain()
 
@@ -71,7 +71,7 @@ def validate_transaction():
         address = request.form['address']
         amount = request.form['amount']
                 
-        owner = JuiceWallet(public_key, import_private_key(private_key), address)
+        owner = JuiceWallet(public_key, import_private_key(private_key), get_address_from_public_key(public_key))
         
         timestamp_0 = datetime.timestamp(datetime.fromisoformat('2011-11-04 00:05:23.111'))
         
