@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
+from datetime import datetime
 
 from blockchain.networkNodeClient import NetworkNodeClient, TransactionException
-from blockchain.initialize_blockchain import blockchain
 from blockchain.lemonBlock import LemonBlock
 
 from wallet.utils import initialize_wallet
@@ -9,9 +9,9 @@ from wallet.juiceWallet import JuiceWallet
 from wallet.transaction import Transaction
 from wallet.transactionInput import TransactionInput
 from wallet.transactionOutput import TransactionOutput
-from wallet.utils import get_address_from_public_key, validate_pair_key, get_balance_from_address, import_private_key
+from wallet.utils import get_address_from_public_key, validate_pair_key, get_balance_from_address, import_private_key 
 
-from datetime import datetime
+from demo.initialize_blockchain import blockchain
 
 app = Flask(__name__)
 
